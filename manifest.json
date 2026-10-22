@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "right9code.greyscale",
+  "name": "Grayscale Mode",
+  "version": "1.0.0",
+  "description": "Desktop Grayscale focus mode for Omarchy, integrating with center bar indicators and Hyprland screen shader.",
+  "author": "right9code",
+  "kinds": [
+    "service"
+  ],
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}
