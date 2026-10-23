@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# omarchy:summary=Toggle desktop grayscale focus mode
+# omarchy:args=[--status]
+# omarchy:examples=omarchy-toggle-greyscale
+
+STATE_DIR="$HOME/.local/state/omarchy/indicators"
+STATE_FILE="$STATE_DIR/greyscale"
+SHADER="$HOME/.config/omarchy/plugins/right9code.greyscale/shaders/grayscale.frag"
+
+mkdir -p "$STATE_DIR"
+
+is_active() {
+  [[ -f "$STATE_FILE" ]] && hyprctl getoption decoration:screen_shader 2>/dev/null | grep -q "grayscale.frag"
+}
+
+if [[ "${1:-}" == "--status" ]]; then
+  if is_active; then
+    echo '{"enabled":true}'
+  else
+    echo '{"enabled":false}'
+  fi
+  exit 0
+fi
+
+if is_active; then
+  rm -f "$STATE_FILE"
+  hyprctl eval 'hl.config({ decoration = { screen_shader = "" } })' >/dev/null 2>&1
+else
+  touch "$STATE_FILE"
+  hyprctl eval "hl.config({ decoration = { screen_shader = \"$SHADER\" } })" >/dev/null 2>&1
+fi
+
+omarchy-shell -q omarchy.indicators refresh
+omarchy-shell -q greyscale refresh
