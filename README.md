@@ -9,7 +9,7 @@ An Omarchy shell plugin that adds an auto-hiding top-bar indicator and desktop g
   - `󰈉` (Inactive / Color ON)
 - **Zero Overhead**: Uses an optimized Rec. 709 luminance shader (`vec3(0.2126, 0.7152, 0.0722)`).
 - **Session & Reload Resilient**: Re-applies shader state seamlessly across Hyprland config reloads.
-- **Global Keybinding**: `SUPER + ALT + G` toggles mode with native desktop notifications.
+- **Pure Bar Control**: Left-click to toggle on/off. Silent, instant, no forced shortcuts or annoying notifications.
 
 ## Requirements
 - Omarchy 4+ with Hyprland
@@ -17,22 +17,21 @@ An Omarchy shell plugin that adds an auto-hiding top-bar indicator and desktop g
 
 ## Installation
 
-Using Omarchy plugin manager:
+### 1. Install via Omarchy CLI
 ```bash
 omarchy plugin add https://github.com/right9code/omarchy-greyscale --enable --yes
 ```
 
-Or for local development:
+### 2. Link CLI Command (Optional)
+If you want to use the `omarchy-toggle-greyscale` CLI command:
 ```bash
-git clone https://github.com/right9code/omarchy-greyscale.git ~/.config/omarchy/plugins/right9code.greyscale
-omarchy plugin enable right9code.greyscale
-omarchy-shell shell rescanPlugins
+bash ~/.config/omarchy/plugins/right9code.greyscale/scripts/install.sh
 ```
 
-## Keybinding Setup
-Add to `~/.config/hypr/bindings.lua`:
+### 3. Optional Keybinding
+If a user wants to configure their own hotkey, they can add this to `~/.config/hypr/bindings.lua`:
 ```lua
-o.bind("SUPER + ALT + G", "Toggle Grayscale Mode", "/home/right9zzz/.local/bin/omarchy-toggle-greyscale")
+o.bind("SUPER + ALT + G", "Toggle Grayscale Mode", "/home/USERNAME/.local/bin/omarchy-toggle-greyscale")
 ```
 
 ## CLI Usage
