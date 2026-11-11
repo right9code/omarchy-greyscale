@@ -22,11 +22,13 @@ An Omarchy shell plugin that adds an auto-hiding top-bar indicator and desktop g
 omarchy plugin add https://github.com/right9code/omarchy-greyscale --enable --yes
 ```
 
-### 2. Link CLI Command (Optional)
-If you want to use the `omarchy-toggle-greyscale` CLI command:
+### 2. Run the Installer
+This links the CLI command and installs the auto-hiding top-bar indicator into a user-owned clone of Omarchy's indicator widget:
 ```bash
 bash ~/.config/omarchy/plugins/right9code.greyscale/scripts/install.sh
 ```
+
+The installer is idempotent and preserves any existing indicator entries.
 
 ### 3. Optional Keybinding
 If a user wants to configure their own hotkey, they can add this to `~/.config/hypr/bindings.lua`:
